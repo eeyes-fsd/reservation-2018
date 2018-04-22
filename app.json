@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/day/dayCheck/dayCheck",
+    "pages/day/dayReserve/step1/step1",
+    "pages/day/dayReserve/step2/step2",
+    "pages/day/dayReserve/step3/step3",
+    "pages/infos/guidance/guidance",
+    "pages/infos/instruction/guidance"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "debug": true
+}
