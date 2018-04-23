@@ -1,13 +1,33 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
+  <!-- 提示模态框 -->
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <!-- 提示一 -->
+  <view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="modal-title">提示</view>
+    <view class="modal-content">
+      <view class="modal-main-first" wx:if="{{showModalFirst}}">
+        这里是主要的提示内容
+      </view>
+      <view class="modal-main-second" wx:if="{{!showModalFirst}}">
+        第二个页面
+      </view>
+    </view>
+    <view class="modal-footer">
+      <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+      <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">{{next}}</view>
+    </view>
+  </view>
+  <!-- 正文 -->
+  <!-- <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
-  </view>
+  </view> -->
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">温馨提示：</text>
+    <text>馆每个时间段最多接纳30人，若多于30人，建议分批次预约</text>
   </view>
 </view>
