@@ -1,2 +1,9 @@
 <!--pages/infos/instruction/guidance.wxml-->
-<text>pages/infos/instruction/guidance.wxml</text>
+<view>
+  <view>使用说明 \n</view>
+  <view>1、本小程序是由西安交通大学互联网社团e瞳网开发，供使用者预约西安交通大学西迁纪念博物馆参观所用。2、本小程序使用方法见下。\n</view>
+  <!-- 这里是具体一点的说明 -->
+  <view>
+  </view>
+  <view>3、在使用过程中，若存在疑问，请致电西安交通大学档案馆：82668759。</view>
+</view>

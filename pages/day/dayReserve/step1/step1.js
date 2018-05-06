@@ -5,16 +5,60 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    month:'',
+    day:'',
+    time:[],
+    hasImage:false,
+    src:'',
+    tipinfo:'开始拍照'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: function (option) {
+    let thisid = option.time;
+    let thismonth = option.month;
+    let thisday = option.day;
+    this.setData({
+      month:thismonth,
+      day:thisday
+    })
+    let app = getApp();
+    let time = app.globalData.chosen_time;
+    this.setData({
+      time:time
+    })
+    console.log(app)
+    console.log(app.globalData.chosen_time)
   },
-
+  //拍照上传
+  takephoto: function(){
+    if(this.data.tipinfo == "确定上传"){
+      wx.navigateTo({
+        url: '../step2/step2',
+      })
+    }else{
+      let self = this;
+      wx.chooseImage({
+        success: function (res) {
+          console.log(res)
+          self.setData({
+            tipinfo: "确定上传"
+          })
+          self.setData({
+            hasImage: true,
+            src: res.tempFilePaths[0]
+          })
+          getApp().globalData.pic = res.tempFilePaths[0];
+          wx.previewImage({
+            current: res.tempFilePaths[0], // 当前显示图片的http链接
+            urls: res.tempFilePaths // 需要预览的图片http链接列表
+          })
+        },
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

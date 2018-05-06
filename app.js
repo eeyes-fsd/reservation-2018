@@ -16,7 +16,26 @@ App({
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log(res.code);
+          if (res.code) {
+            wx.request({
+              url: 'https://visit.sxxuzhixuan.top/api/authorizations',
+              method: 'post',
+              data: {
+                code: res.code
+              },
+              success:function(res){
+                let token = res.data.access_token;
+                wx.setStorage({
+                  key: 'token',
+                  data: token,
+                })
+              }
+            })
+            console.log(res);
+          } else {
+            console.log(res.code + res.errMsg);
+          }
       }
     })
     // 获取用户信息
@@ -41,6 +60,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    chosen_time:[],
+    chosen_id:[],
+    pic:""
   }
 })

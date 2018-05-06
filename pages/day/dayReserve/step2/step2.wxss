@@ -1,1 +1,14 @@
 /* pages/day/dayReserve/step2/step2.wxss */
+@import "./weui.wxss";
+
+.page-section{
+  margin-bottom: 20rpx;
+}
+.title{
+  font-size: 36rpx;
+  text-align: center;
+}
+.upload{
+  background:#0DBF2A;
+  color:#fff;
+}

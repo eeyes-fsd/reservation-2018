@@ -1,2 +1,19 @@
-<!--pages/day/dayReserve/step1/step1.wxml-->
-<text>pages/day/dayReserve/step1/step1.wxml</text>
+<!--申请第一步-->
+<view class="top">
+  下面是您选择的时间：
+</view>
+<view>
+  <view class="time">{{month}}月{{day}}日</view>
+  <view class="time" wx:for="{{time}}" wx:for-item="item">{{item}}</view>
+</view>
+<view class="takingPhoto">
+  请拍照上传您的身份证：
+  <view class="photo-tip">
+   仅需上传身份证的正面
+   校内人员仅需上传校园卡
+  </view>
+</view>
+<image class="IDcard" wx:if="{{hasImage}}" src="{{src}}"></image>
+<view>
+  <button class="upload" bindtap="takephoto">{{tipinfo}}</button>
+</view>

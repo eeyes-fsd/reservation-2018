@@ -1,2 +1,32 @@
-<!--pages/day/dayReserve/step2/step2.wxml-->
-<text>pages/day/dayReserve/step2/step2.wxml</text>
+<!--申请第二步-->
+<view>
+  <view class="title">请输入详细信息</view>
+  <form bindsubmit="reserve">
+    <view class="page-section">
+      <view class="weui-cells__title">请输入参观人数</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input name="people" class="weui-input" type="number" bindinput="getpeople"/>
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="weui-cells__title">请输入联系电话</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input name="phone" class="weui-input" type="number" bindinput="getphone"/>
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="weui-cells__title">请输入单位</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input name="company" class="weui-input" maxlength="10" placeholder="最大输入长度为10" bindinput="getcompany"/>
+        </view>
+      </view>
+    </view>
+    <button class="upload" disabled="{{hasfilled}}" bindtap="reserve">申请</button>
+  </form>
+
+</view>

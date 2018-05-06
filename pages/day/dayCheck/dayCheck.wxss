@@ -1,1 +1,68 @@
 /* pages/day/dayCheck/dayCheck.wxss */
+.top{
+  text-align: center;
+  font-size: 44rpx;
+  border-bottom:3rpx solid gray;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+.change{
+  width:60rpx;
+  height:50rpx;
+  margin-top:5rpx;
+  position:absolute;
+  right:20rpx;
+  top:20rpx;
+}
+.time-table{
+  margin-top: 32rpx;
+  text-align: center;
+  font-size: 48rpx;
+  width:90%;
+  margin:auto;
+}
+.time-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 36rpx;
+  margin-top: 48rpx;
+  padding:12rpx;
+  border-bottom:1px dotted;
+}
+.item-time{
+  margin-right: 100rpx;
+}
+.item-status-red{
+  background:red;
+  color:#fff;
+  padding:12rpx;
+  border-radius:6px
+}
+.item-status-blue{
+  background:#5AA4E8;
+  color:#fff;
+  padding:12rpx;
+  border-radius:6px
+}
+.item-status-green{
+  background:#09BB07;
+  color:#fff;
+  padding:12rpx;
+  border-radius:6px
+}
+.setup{
+  margin-top: 64rpx;
+  background: #0DBF2A;
+  color: #fff;
+}
+.status{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 100rpx;
+}
+.check-one{
+  margin-left:50rpx;
+  padding-top:12rpx;
+}

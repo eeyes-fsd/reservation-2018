@@ -2,15 +2,38 @@
 <view class="container">
   <!-- 提示模态框 -->
   <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-    <!-- 提示一 -->
+  <!-- 提示一 -->
   <view class="modal-dialog" wx:if="{{showModal}}">
     <view class="modal-title">提示</view>
     <view class="modal-content">
       <view class="modal-main-first" wx:if="{{showModalFirst}}">
-        这里是主要的提示内容
+        西安交通大学西迁纪念博物馆欢迎您的参观！
+        <view class="info_item">
+          <view class="info_pic day_all">21</view>
+          <view class="info_word">表示该日全部可预约</view>
+        </view>
+        <view class="info_item">
+          <view class="info_pic day_part">21</view>
+          <view class="info_word">表示该日部分时间可预约</view>
+        </view>
+        <view class="info_item">
+          <view class="info_pic day_no">21</view>
+          <view class="info_word">表示该日不可预约</view>
+        </view>
       </view>
       <view class="modal-main-second" wx:if="{{!showModalFirst}}">
-        第二个页面
+        <view class="info_item">
+          <view class="info_pic day_past">21</view>
+          <view class="info_word">表示该日已过或未开放预约</view>
+        </view>
+        <view class="info_item">
+          <view class="info_pic day_now">21</view>
+          <view class="info_word">表示今日日期</view>
+        </view>
+        <view class="info_item">
+          <view class="info_pic day_you">21</view>
+          <view class="info_word">表示您预约的日期</view>
+        </view>
       </view>
     </view>
     <view class="modal-footer">
@@ -19,15 +42,77 @@
     </view>
   </view>
   <!-- 正文 -->
-  <!-- <view class="userinfo">
+  <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
-  </view> -->
+  </view>
   <view class="usermotto">
     <text class="user-motto">温馨提示：</text>
     <text>馆每个时间段最多接纳30人，若多于30人，建议分批次预约</text>
+  </view>
+</view>
+<view class="calendar">
+  <view class="flex calendar-choose">
+    <view class="tc mouth-wrap">
+      <view class="fl prev-mouth" data-handle="prev" bindtap="handleMonth">
+        <text class="iconfont icon-zuoyouqiehuan"></text>
+      </view>
+      <view class="mouth-picker">
+        <picker value="{{cur_month}}" range="{{monthList}}" bindchange="chooseMonth">
+          <view class="picker">{{cur_month+1}}月</view>
+        </picker>
+      </view>
+      <view class="fr next-mouth" data-handle="next" bindtap="handleMonth">
+        <text class="iconfont icon-zuoyouqiehuan1"></text>
+      </view>
+    </view>
+    <view class="year-wrap">
+      <picker class="tr" value="{{itemIndex}}" range="{{yearList}}" style="width:200rpx;" bindchange="chooseYear">
+        <view class="picker">{{yearList[itemIndex]}}年</view>
+      </picker>
+      <view class="iconfont icon-xia"></view>
+    </view>
+  </view>
+  <view>
+    <view class="flex week-list">
+      <view class="week-itm" wx:for="{{weeklist}}">{{item}}</view>
+    </view>
+    <view class="flex days-list">
+      <view class="day lm" wx:for="{{lastMonthDaysList}}" data-handle="prev" bindtap="handleMonth" bindtap="daycheck">
+        <text>{{item}}</text>
+      </view>
+      <block wx:for="{{day_status}}" wx:for-item="item">
+        <block wx:if="{{(item.status == 1)&&(item.day!=undefined)}}">
+          <view class="day green" bindtap="daycheck" data-id="{{item.id}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-status="{{item.status}}">
+            <text>{{item.day}}</text>
+          </view>
+        </block>
+        <block wx:if="{{(item.status == 2)&&(item.day!=undefined)}}">
+          <view class="day yellow" bindtap="daycheck" data-id="{{item.id}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-status="{{item.status}}">
+            <text>{{item.day}}</text>
+          </view>
+        </block>
+        <block wx:elif="{{(item.status == 3)&&(item.day!=undefined)}}">
+          <view class="day red" bindtap="daycheck" data-id="{{item.id}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-status="{{item.status}}">
+            <text>{{item.day}}</text>
+          </view>
+        </block>
+        <block wx:elif="{{(item.status==undefined)&&(item.day!=undefined)}}">
+          <view class="day" bindtap="daycheck" data-id="{{item.id}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-status="{{item.status}}">
+            <text>{{item.day}}</text>
+          </view>
+        </block>
+      </block>
+      <!-- 未来情况 -->
+      <view class="day nm" wx:for="{{nextMonth}}" data-handle="next" bindtap="handleMonth" bindtap="daycheck" data-id="{{item.id}}">
+        <text wx:if="{{item.status==1}}" class="blo-text green">{{item.day}}</text>
+        <text wx:elif="{{item.status==2}}" class="blo-text yellow">{{item.day}}</text>
+        <text wx:elif="{{item.status==3}}" class="blo-text red">{{item.day}}</text>
+        <text wx:elif="{{item.status==undefined}}" class="blo-text">{{item.day}}</text>
+      </view>
+    </view>
   </view>
 </view>

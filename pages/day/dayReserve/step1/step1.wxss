@@ -1,1 +1,25 @@
 /* pages/day/dayReserve/step1/step1.wxss */
+.IDcard{
+  width:600rpx;
+  margin: 36rpx auto;
+  display:block;
+}
+.top{
+  font-size: 48rpx;
+  margin: 36rpx;
+}
+.time{
+  text-align: center;
+  margin-top: 36rpx;
+}
+.takingPhoto{
+  margin-top: 36rpx;
+  padding: 36rpx;
+}
+.photo-tip{
+  font-size: 24rpx;
+}
+.upload{
+  background:#0DBF2A;
+  color:#fff;
+}

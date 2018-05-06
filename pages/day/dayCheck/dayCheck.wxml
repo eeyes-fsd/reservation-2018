@@ -1,2 +1,28 @@
-<!--pages/day/dayCheck/dayCheck.wxml-->
-<text>pages/day/dayCheck/dayCheck.wxml</text>
+<!--某日详细信息页面-->
+<view class="top">
+  <image class="change" src="../../static/change.png" mode="aspectFill" bindtap="change"></image>
+  <view space="true"> {{month}}月{{day}}日 </view>
+</view>
+<view class="time-table">
+  <view>今日预约情况</view>
+  <view class="time-item" wx:for="{{time_table}}" wx:for-item="item">
+    <view class="item-time">{{item.begin_at}}</view>
+    <view></view>
+    <view></view>
+    <view class="status" wx:if="{{item.status == 0}}">
+      <view class="item-status-red">已预约</view>
+      <icon type="cancel" color="gray" class="check-one" wx:if="{{edit}}"></icon>
+    </view>
+    <view class="status" wx:elif="{{item.status == 1}}">
+      <view class="item-status-green">可预约</view>
+      <icon type="success" data-time="{{item.begin_at}}" data-id="{{item.id}}" class="check-one" wx:if="{{edit}}" bindtap="addtime"></icon>
+    </view>
+    <view class="status" wx:elif="{{item.status == 2}}">
+      <view class="item-status-blue">已预约</view>
+      <icon data-id="{{item.id}}" type="cancel" class="check-one" wx:if="{{edit}}" bindtap="cancelThis"></icon>
+    </view>
+  </view>
+</view>
+<button class="setup" disabled="{{hasChosen}}" wx:if="{{edit}}" bindtap="startChange">
+  开始预约
+</button>
