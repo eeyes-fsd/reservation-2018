@@ -11,7 +11,7 @@ Page({
     phone: 0,
     company: "",
     atoken:"",
-    hasfilled:false
+    hasfilled:true
   },
   //输入框聚焦
   onfocusA: function () {
@@ -31,18 +31,45 @@ Page({
     this.setData({
       people: val
     });
+    let people = this.data.people;
+    let phone = this.data.phone;
+    let company = this.data.company;
+    let filled = true;
+    if ((people != 0) && (phone != 0) && (company != ""))
+      filled = false;
+    this.setData({
+      hasfilled:filled
+    })
   },
   getphone: function (e) {
     var val = e.detail.value;
     this.setData({
       phone: val
     });
+    let people = this.data.people;
+    let phone = this.data.phone;
+    let company = this.data.company;
+    let filled = true;
+    if ((people != 0) && (phone != 0) && (company != ""))
+      filled =false;
+    this.setData({
+      hasfilled:filled
+    })
   },
   getcompany: function (e) {
     var val = e.detail.value;
     this.setData({
       company: val
     });
+    let people = this.data.people;
+    let phone = this.data.phone;
+    let company = this.data.company;
+    let filled = true;
+    if ((people != 0) && (phone != 0) && (company != ""))
+      filled = false;
+    this.setData({
+      hasfilled: filled
+    })
   },
   checkInfo:function(){
     let people = this.data.people;
@@ -54,7 +81,13 @@ Page({
   },
   reserve: function () {
     //发送请求，如果成功进入下一步，如果不成功则提示失败
-
+    let people = this.data.people;
+    let phone = this.data.phone;
+    let company = this.data.company;
+    let filled =  false;
+    if ((people != 0) && (phone != 0) && (company != ""))
+      filled = true;
+    
     let time = getApp().globalData.chosen_id;
     //将预约信息集合成一个JSON
 
@@ -79,9 +112,6 @@ Page({
           },
           fail: function (res) {
             console.log("失败");
-            wx.navigateTo({
-              url: '../step3/step3',
-            })
           }
         })
       })
@@ -108,13 +138,18 @@ Page({
       })
       return q;
     }
+    if(filled){
+      upInfo().then(function (data) {
+        console.log(data);
+        uppic();
+      }).then(() => {
+        console.log("都成功了")
+        wx.redirectTo({
+          url: '../step3/step3',
+        })
+      })
+    }
 
-    upInfo().then(function(data){
-      console.log(data);
-      uppic();
-    }).then(()=>{
-      console.log("都成功了")
-    })
   },
   /**
    * 生命周期函数--监听页面加载

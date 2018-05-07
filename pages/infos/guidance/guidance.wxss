@@ -1,1 +1,9 @@
 /* pages/infos/guidance/guidance.wxss */
+.title{
+  font-size: 48rpx;
+}
+view{
+  margin: 12rpx;
+  padding-left: 12rpx;
+  padding-right: 12rpx;
+}

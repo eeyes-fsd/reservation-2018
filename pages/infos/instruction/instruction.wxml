@@ -1,0 +1,38 @@
+<!--pages/infos/instruction/guidance.wxml-->
+<view class="title">
+  <view>使用说明 \n</view>
+  <view>1、本小程序是由西安交通大学互联网社团e瞳网开发，供使用者预约西安交通大学西迁纪念博物馆参观所用。\n</view>
+  <view>2、本小程序使用方法见下。\n</view>
+  <!-- 这里是具体一点的说明 -->
+  <view>
+  <view>
+           <view class="info_item">
+          <view class="info_pic day_all">21</view>
+          <view class="info_word">表示该日全部可预约</view>
+        </view>
+        <view class="info_item">
+          <view class="info_pic day_part">21</view>
+          <view class="info_word">表示该日部分时间可预约</view>
+        </view>
+        <view class="info_item">
+          <view class="info_pic day_no">21</view>
+          <view class="info_word">表示该日不可预约</view>
+        </view>
+      </view>
+      <view class="modal-main-second">
+        <view class="info_item">
+          <view class="info_pic day_past">21</view>
+          <view class="info_word">表示该日已过或未开放预约</view>
+        </view>
+        <view class="info_item">
+          <view class="info_pic day_now">21</view>
+          <view class="info_word">表示今日日期</view>
+        </view>
+        <view class="info_item">
+          <view class="info_pic day_you">21</view>
+          <view class="info_word">表示您预约的日期</view>
+        </view>
+  </view>
+  </view>
+  <view>3、在使用过程中，若存在疑问，请致电西安交通大学档案馆：82668759。</view>
+</view>

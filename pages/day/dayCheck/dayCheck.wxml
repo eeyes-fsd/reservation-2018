@@ -1,4 +1,15 @@
 <!--某日详细信息页面-->
+<!-- 提示模态框 -->
+<!-- 提示模态框 -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="modal-title">提示</view>
+    <view class="modal-content">确认删除此次预约？</view>
+    <view class="modal-footer">
+      <view class="btn-cancel" bindtap="noCancel" data-status="cancel">取消</view>
+      <view class="btn-confirm" bindtap="confirmCancel" data-status="confirm">确认</view>
+    </view>
+  </view>
 <view class="top">
   <image class="change" src="../../static/change.png" mode="aspectFill" bindtap="change"></image>
   <view space="true"> {{month}}月{{day}}日 </view>
@@ -11,11 +22,11 @@
     <view></view>
     <view class="status" wx:if="{{item.status == 0}}">
       <view class="item-status-red">已预约</view>
-      <icon type="cancel" color="gray" class="check-one" wx:if="{{edit}}"></icon>
+      <icon type="warn" color="gray" class="check-one" wx:if="{{edit}}"></icon>
     </view>
     <view class="status" wx:elif="{{item.status == 1}}">
       <view class="item-status-green">可预约</view>
-      <icon type="success" data-time="{{item.begin_at}}" data-id="{{item.id}}" class="check-one" wx:if="{{edit}}" bindtap="addtime"></icon>
+      <image src="{{item.src}}" class="choose_img" data-index="{{index}}" data-time="{{item.begin_at}}"  data-id="{{item.id}}" class="check-one" wx:if="{{edit}}" bindtap="addtime"></image>
     </view>
     <view class="status" wx:elif="{{item.status == 2}}">
       <view class="item-status-blue">已预约</view>

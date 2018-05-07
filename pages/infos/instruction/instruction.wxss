@@ -1,0 +1,47 @@
+/* pages/infos/instruction/guidance.wxss */
+.title{
+  font-size: 48rpx;
+}
+view{
+  padding: 6rpx 12rpx;
+}
+.info_item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.info_pic {
+  width: 100rpx;
+  height: 90rpx;
+  margin: 30rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.info_word {
+  width: 80%;
+}
+
+.day_all {
+  background-color: #09bb07;
+}
+
+.day_part {
+  background-color: #ff9800;
+}
+.day_no{
+  background-color: #E51C23;
+}
+.day_past{
+  background-color: #bbbbbb;
+}
+.day_now{
+  background-color: #bbbbbb;
+  border: 12rpx solid black;
+}
+.day_you{
+  background-color: #5AA4E8;
+}

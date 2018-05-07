@@ -5,10 +5,11 @@
     <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </block>
-  <text>申请成功</text>
+  <text class="success large">申请成功</text>
+  <text class="success">我们将尽快将审核结果发送到您的手机，请注意查收</text>
+  <text class="success small">参观之前，请阅读参观通知</text>
 </view>
 <view>
-  <text>参观之前，请阅读参观通知</text>
-  <button bindtap="tips">阅读通知</button>
-  <button bindtap="cancel">取消</button>
+  <button class="yesButton" bindtap="tips">阅读参观通知</button>
+  <button class="yesButton" bindtap="cancel">返回首页</button>
 </view>

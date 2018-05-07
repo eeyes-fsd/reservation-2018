@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin:150rpx 0rpx;
 }
 
 .userinfo-avatar {
@@ -15,4 +14,17 @@
 
 .userinfo-nickname {
   color: #aaa;
+}
+.success{
+  margin-top: 60rpx;
+  text-align: center;
+  padding: 8rpx 120rpx;
+}
+.yesButton{
+  background:#0DBF2A;
+  color:#fff;
+  margin-top: 40rpx
+}
+.small{
+  font-size: 36rpx
 }

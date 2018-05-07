@@ -1,6 +1,6 @@
 /**index.wxss**/
 
-page{width:100%;height:100%;font-size:32rpx;color:#666;}
+page{width:100%;height:100%;font-size:32rpx;color:#666;margin-top: 80rpx;}
 view{box-sizing: border-box;}
 view:after,view:before{content: "";box-sizing: border-box;}
 .flex{display:-webkit-flex;display: flex;width:100%;}
@@ -150,7 +150,7 @@ view:after,view:before{content: "";box-sizing: border-box;}
 .calendar .week-list{line-height: 60rpx;background:#b9c4c9;}
 .calendar .week-list .week-itm{flex:1;text-align: center;font-size:28rpx;color:#fff;}
 .calendar .days-list{-webkit-flex-wrap: wrap;flex-wrap: wrap;width:99.995%;}
-.calendar .days-list .day{width: 14.285%;height:60rpx;border-right:1rpx solid #e5e5e5;border-bottom:1rpx solid #e5e5e5;color:#333;position: relative;text-align: center;line-height: 60rpx;}
+.calendar .days-list .day{width: 14.285%;height:80rpx;border-right:1rpx solid #e5e5e5;border-bottom:1rpx solid #e5e5e5;color:#333;position: relative;text-align: center;line-height: 80rpx;}
 .calendar .days-list .lm,.calendar .days-list .nm{color:#b6b6b6;}
 .calendar .day .ep{color:#333;}
 .green{background: #09BB07;color: #fff;}
@@ -159,4 +159,22 @@ view:after,view:before{content: "";box-sizing: border-box;}
 .yellow>text{color: #fff;}
 .red{background: #E51C23;color: #fff;}
 .red>text{color: #fff;}
+.blue{background: #5AA4E8;color: #fff;}
+.blue>text{color: #fff;}
 .blo-text{display: block;}
+
+.getHelp{
+  background:#0DBF2A;
+  width: 80%;
+  color:#fff;
+  margin-top: 40rpx;
+}
+.instruction{
+  text-align:center;
+margin-top:24rpx;
+display:block;
+width:180rpx;
+margin:24rpx auto;
+border-bottom:1px solid;
+
+}

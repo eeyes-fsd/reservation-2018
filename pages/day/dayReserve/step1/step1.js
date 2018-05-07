@@ -10,7 +10,7 @@ Page({
     time:[],
     hasImage:false,
     src:'',
-    tipinfo:'开始拍照'
+    tipinfo:'拍取照片'
   },
 
   /**
@@ -29,13 +29,11 @@ Page({
     this.setData({
       time:time
     })
-    console.log(app)
-    console.log(app.globalData.chosen_time)
   },
   //拍照上传
   takephoto: function(){
     if(this.data.tipinfo == "确定上传"){
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../step2/step2',
       })
     }else{

@@ -45,7 +45,7 @@
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
@@ -85,6 +85,11 @@
         <text>{{item}}</text>
       </view>
       <block wx:for="{{day_status}}" wx:for-item="item">
+        <block wx:if="{{(item.status == 0)&&(item.day!=undefined)}}">
+          <view class="day blue" bindtap="daycheck" data-id="{{item.id}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-status="{{item.status}}">
+            <text>{{item.day}}</text>
+          </view>
+        </block>
         <block wx:if="{{(item.status == 1)&&(item.day!=undefined)}}">
           <view class="day green" bindtap="daycheck" data-id="{{item.id}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-status="{{item.status}}">
             <text>{{item.day}}</text>
@@ -107,12 +112,15 @@
         </block>
       </block>
       <!-- 未来情况 -->
-      <view class="day nm" wx:for="{{nextMonth}}" data-handle="next" bindtap="handleMonth" bindtap="daycheck" data-id="{{item.id}}">
-        <text wx:if="{{item.status==1}}" class="blo-text green">{{item.day}}</text>
+      <view class="day nm" wx:for="{{nextMonth}}" data-day="{{item.day}}" data-month="{{cur_month+2}}" data-handle="next" bindtap="handleMonth" data-status="{{item.status}}" bindtap="daycheck" data-id="{{item.id}}">
+        <text wx:if="{{item.status==0}}" class="blo-text blue">{{item.day}}</text>
+        <text wx:elif="{{item.status==1}}" class="blo-text green">{{item.day}}</text>
         <text wx:elif="{{item.status==2}}" class="blo-text yellow">{{item.day}}</text>
         <text wx:elif="{{item.status==3}}" class="blo-text red">{{item.day}}</text>
         <text wx:elif="{{item.status==undefined}}" class="blo-text">{{item.day}}</text>
       </view>
     </view>
   </view>
+  <button class="getHelp" bindtap="getGuidance">点击阅读参观须知</button>
+  <view class="instruction" bindtap="getInfo">使用说明</view>
 </view>

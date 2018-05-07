@@ -1,12 +1,12 @@
 <!--pages/infos/guidance/guidance.wxml-->
 <view>
-  <view>一、开放时间 \n</view>
+  <view class="title">一、开放时间 \n</view>
   <view>1.工作日开放。 \n</view>
   <view>夏季: 上午10:00-12:00,下午14: 30-18: 00 \n</view>
   <view> 冬季: 上午10:00-12:00,下午14: 00-17: 30 \n</view>
   <view>2.开放日距离闭馆时间30分钟进入闭馆准备流程，参观者请提前做好离馆准备。 \n</view>
   <view>3.因故闭馆时，将另行通知。 \n</view>
-  <view>二、参观登记流程\n</view>
+  <view class="title">二、参观登记流程\n</view>
   <view>(一) 团体参观\n</view>
   <view>1.校外团体预约成功后，参观时请携带单位介绍信。 \n</view>
   <view>2.参观团队到馆时，请团队联系人出示介绍信，并将介绍信交给管理员接收存照，以便顺利入馆参观。 \n</view>

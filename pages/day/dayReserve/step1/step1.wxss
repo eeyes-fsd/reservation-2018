@@ -21,5 +21,6 @@
 }
 .upload{
   background:#0DBF2A;
+  margin-bottom: 64rpx;
   color:#fff;
 }

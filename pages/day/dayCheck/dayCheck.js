@@ -11,7 +11,9 @@ Page({
     edit:false,
     time_chosen:[],
     id_chosen:[],
-    hasChosen:true
+    hasChosen:true,
+    picSrc:"../../static/border.png",
+    showModal: false,
   },
 
   /**
@@ -45,7 +47,8 @@ Page({
     let that = this;
     getDay().then(function(data){
       for(let i=0;i<data.length;i++){
-        data[i].begin_at = data[i].begin_at.slice(0,5)
+        data[i].begin_at = data[i].begin_at.slice(0,5);
+        data[i].src = "../../static/border.png"
       }
       that.setData({
         time_table:data
@@ -73,7 +76,7 @@ Page({
     if(getApp().globalData.chosen_id.length==0){
       console.log("请选择")
     }else{
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../dayReserve/step1/step1?month=' + this.data.month + "&day=" + this.data.day,
       })
     }
@@ -88,11 +91,13 @@ Page({
   },
   //选择预约时间
   addtime: function(event){
-    
+    console.log(event)
     let chosen_time = event.currentTarget.dataset.time;
     let chosen_id = event.currentTarget.dataset.id;
+    let index = event.currentTarget.dataset.index;
     let time = this.data.time_chosen;
     let id = this.data.id_chosen;
+    let time_table = this.data.time_table;
     var i=0;
     for(i=0;i<time.length;i++){
       if(time[i]==chosen_time) break;
@@ -110,9 +115,18 @@ Page({
     if (i < id.length) {
       console.log("存在");
       id.splice(i, 1);
+      time_table[index].src = "../../static/border.png";
+      this.setData({
+        time_table:time_table
+      })
+      
     } else {
       console.log("不存在");
-      id.push(chosen_id)
+      id.push(chosen_id);
+      time_table[index].src = "../../static/tick.png";
+      this.setData({
+        time_table: time_table
+      })
     }
     let a = getApp().globalData.chosen_time;
     getApp().globalData.chosen_time = time;
@@ -131,7 +145,51 @@ Page({
       })
     }
   },
-  
+  cancelThis:function(event){
+    let id = event.currentTarget.dataset.id;
+    this.setData({
+      showModal:true,
+      cancelID:id
+    })
+    console.log(id)
+  },
+  noCancel:function(){
+    this.setData({
+      showMoal: false
+    })
+  },
+  confirmCancel:function(){
+    let id = this.data.cancelID;
+    console.log(id)
+    function getToken(){
+      var pro0 = new Promise(function (resolve, reject) {
+        wx.getStorage({
+          key: 'token',
+          success: function (res) {
+            let atoken = res.data;
+            wx.request({
+              url: 'https://visit.sxxuzhixuan.top/api/cancel/' + id,
+              method:'post',
+              header: { Authorization: "Bearer " + atoken },
+              success:function(res){
+                console.log(res)
+                resolve(res)
+              }
+            })
+          }
+        })
+      })
+      return pro0;
+    }
+    
+  getToken().then(function(data){
+    console.log(data)
+    wx.navigateTo({
+      url: '../../index/index',
+    })
+  })
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
