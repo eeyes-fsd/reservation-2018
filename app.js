@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function (scene) {
-    wx.setNavigationBarTitle({ title: "西迁博物馆参观预约系统" });
+    wx.setNavigationBarTitle({ title: "西迁历史纪念馆" });
 
 
     //首次进入或者冷启动时出现提示

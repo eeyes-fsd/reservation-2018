@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
     "pages/day/dayCheck/dayCheck",
     "pages/day/dayReserve/step1/step1",
     "pages/day/dayReserve/step2/step2",

@@ -11,7 +11,8 @@ Page({
     phone: 0,
     company: "",
     atoken:"",
-    hasfilled:true
+    hasfilled:true,
+    inputTxt:0
   },
   //输入框聚焦
   onfocusA: function () {
@@ -28,8 +29,12 @@ Page({
   },
   getpeople: function (e) {
     var val = e.detail.value;
+    if(val>30){
+      val = 30;
+    }
     this.setData({
-      people: val
+      people: val,
+      inputTxt:val
     });
     let people = this.data.people;
     let phone = this.data.phone;
