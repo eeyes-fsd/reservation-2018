@@ -20,17 +20,24 @@
     <view class="item-time">{{item.begin_at}}</view>
     <view></view>
     <view></view>
-    <view class="status" wx:if="{{item.status == 0}}">
+    <view class="status" wx:if="{{item.status == 2}}">
       <view class="item-status-red">已预约</view>
       <icon type="warn" color="gray" class="check-one" wx:if="{{edit}}"></icon>
+    </view>
+    <view class="status" wx:elif="{{item.check == 0 && item.status ==0}}">
+      <view class="item-status-gray">审核中</view>
+      <icon data-id="{{item.id}}" type="cancel" class="check-one" wx:if="{{edit}}" bindtap="cancelThis"></icon>
     </view>
     <view class="status" wx:elif="{{item.status == 1}}">
       <view class="item-status-green">可预约</view>
       <image src="{{item.src}}" class="choose_img" data-index="{{index}}" data-time="{{item.begin_at}}"  data-id="{{item.id}}" class="check-one" wx:if="{{edit}}" bindtap="addtime"></image>
     </view>
-    <view class="status" wx:elif="{{item.status == 2}}">
+    <view class="status" wx:elif="{{item.status == 0 && item.check == 1}}">
       <view class="item-status-blue">已预约</view>
       <icon data-id="{{item.id}}" type="cancel" class="check-one" wx:if="{{edit}}" bindtap="cancelThis"></icon>
+    </view>
+    <view class="status" wx:elif="{{item.check == -1}}">
+      <view class="item-status-orange">已拒绝</view>
     </view>
   </view>
 </view>

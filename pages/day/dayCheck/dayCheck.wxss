@@ -51,6 +51,18 @@
   padding:12rpx;
   border-radius:6px
 }
+.item-status-orange{
+  background:#FF6600;
+  color:#fff;
+  padding:12rpx;
+  border-radius:6px
+}
+.item-status-gray{
+  background:#C0C0C0;
+  color:#fff;
+  padding:12rpx;
+  border-radius:6px
+}
 .setup{
   margin-top: 64rpx;
   margin-bottom: 64rpx;

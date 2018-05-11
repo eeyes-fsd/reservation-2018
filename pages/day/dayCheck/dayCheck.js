@@ -29,12 +29,26 @@ Page({
       day:thisday
     })
     //发送请求获得json数据
-    function getDay(){
+    function getToken() {
+      var p = new Promise(function (resolve, reject) {
+        wx.getStorage({
+          key: 'token',
+          success: function (res) {
+            let atoken = res.data;
+            resolve(atoken)
+          }
+        })
+      })
+      return p;
+    }
+
+    function getDay(token){
       var p = new Promise(function (resolve, reject) {
         let thisid = option.id;
         wx.request({
           url: 'https://visit.sxxuzhixuan.top/api/days/'+thisid,
           method: 'get',
+          header: { Authorization: "Bearer " + token },
           success: function (res) {
             let time = res.data.data;
             console.log(res)
@@ -45,13 +59,17 @@ Page({
       return p;
     }
     let that = this;
-    getDay().then(function(data){
-      for(let i=0;i<data.length;i++){
-        data[i].begin_at = data[i].begin_at.slice(0,5);
-        data[i].src = "../../static/border.png"
-      }
-      that.setData({
-        time_table:data
+    getToken().then(function(data){
+      console.log(data)
+      getDay(data).then(function(data){
+        console.log(data)
+        for (let i = 0; i < data.length; i++) {
+          data[i].begin_at = data[i].begin_at.slice(0, 5);
+          data[i].src = "../../static/border.png"
+        }
+        that.setData({
+          time_table: data
+        })
       })
     })
     /**
