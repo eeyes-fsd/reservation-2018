@@ -7,3 +7,6 @@ view{
   padding-left: 12rpx;
   padding-right: 12rpx;
 }
+.important{
+  font-weight: bold;
+}

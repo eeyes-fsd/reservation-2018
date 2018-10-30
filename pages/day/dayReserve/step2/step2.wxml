@@ -1,12 +1,21 @@
 <!--申请第二步-->
 <view>
+  <loading hidden="{{loadingHidden}}">加载中……</loading>
   <view class="title">请输入详细信息</view>
   <form bindsubmit="reserve">
+    <view class="page-section">
+      <view class="weui-cells__title">请输入联系人姓名</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input name="name" class="weui-input" placeholder="请输入姓名" type="text" bindinput="getname" />
+        </view>
+      </view>
+    </view>
     <view class="page-section">
       <view class="weui-cells__title">请输入参观人数</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-          <input name="people" class="weui-input" placeholder="不超过30" value="{{inputTxt}}"type="number" bindinput="getpeople"/>
+          <input name="people" class="weui-input" placeholder="不超过30" value="{{inputTxt}}" type="number" bindinput="getpeople" />
         </view>
       </view>
     </view>
@@ -14,7 +23,7 @@
       <view class="weui-cells__title">请输入联系电话</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-          <input name="phone" class="weui-input" type="number" bindinput="getphone"/>
+          <input name="phone" class="weui-input" type="number" bindinput="getphone" />
         </view>
       </view>
     </view>
@@ -22,7 +31,15 @@
       <view class="weui-cells__title">请输入单位</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-          <input name="company" class="weui-input" maxlength="10" placeholder="最大输入长度为10" bindinput="getcompany"/>
+          <input name="company" class="weui-input" maxlength="30" placeholder="最大输入长度为30" bindinput="getcompany" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="weui-cells__title">请输入备注</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input name="info" class="weui-input" maxlength="50" placeholder="选填" bindinput="getinfo" />
         </view>
       </view>
     </view>

@@ -1,13 +1,13 @@
 //app.js
 App({
   onLaunch: function (scene) {
-    wx.setNavigationBarTitle({ title: "西迁历史纪念馆" });
+    wx.setNavigationBarTitle({ title: "西安交通大学西迁历史纪念馆" });
 
 
     //首次进入或者冷启动时出现提示
     let sceneID = scene.scene;
     if( sceneID == 1001 || sceneID == 1019 || sceneID == 1022 || sceneID == 1023 || sceneID == 1038 || sceneID == 1056 ){
-      console.log("进入小程序")
+      
     }
 
     // 展示本地存储能力
@@ -16,12 +16,12 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
+    let url = this.globalData.request_url
     wx.login({
       success: res => {
-        console.log(res.code);
           if (res.code) {
             wx.request({
-              url: 'https://visit.sxxuzhixuan.top/api/authorizations',
+              url: url + 'authorizations',
               method: 'post',
               data: {
                 code: res.code
@@ -34,9 +34,9 @@ App({
                 })
               }
             })
-            console.log(res);
+            
           } else {
-            console.log(res.code + res.errMsg);
+            
           }
       }
     })
@@ -65,6 +65,7 @@ App({
     userInfo: null,
     chosen_time:[],
     chosen_id:[],
-    pic:""
+    pic:"",
+    request_url:"https://mem.eeyes.xyz/api/",
   }
 })

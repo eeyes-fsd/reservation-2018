@@ -7,10 +7,10 @@
   <view class="time" wx:for="{{time}}" wx:for-item="item">{{item}}</view>
 </view>
 <view class="takingPhoto">
-  请拍照上传您的身份证：
+  请拍照上传单位介绍信及身份证（两者放在一起拍照上传即可）
   <view class="photo-tip">
-   仅需上传身份证的正面
    校内人员仅需上传校园卡
+   介绍信请保留，参观时需要出示。
   </view>
 </view>
 <image class="IDcard" wx:if="{{hasImage}}" src="{{src}}"></image>

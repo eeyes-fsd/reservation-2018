@@ -1,6 +1,5 @@
 <!--某日详细信息页面-->
-<!-- 提示模态框 -->
-<!-- 提示模态框 -->
+<loading hidden="{{loadingHidden}}">加载中……</loading>
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <view class="modal-dialog" wx:if="{{showModal}}">
     <view class="modal-title">提示</view>
@@ -17,26 +16,26 @@
 <view class="time-table">
   <view>今日预约情况</view>
   <view class="time-item" wx:for="{{time_table}}" wx:for-item="item">
-    <view class="item-time">{{item.begin_at}}</view>
+    <view class="item-time">{{item.time}}</view>
     <view></view>
     <view></view>
-    <view class="status" wx:if="{{item.status == 2}}">
+    <view class="status" wx:if="{{ item.status == 1}}">
       <view class="item-status-red">已预约</view>
       <icon type="warn" color="gray" class="check-one" wx:if="{{edit}}"></icon>
     </view>
-    <view class="status" wx:elif="{{item.check == 0 && item.status ==0}}">
+    <view class="status" wx:elif="{{item.review == -1 && item.status == 2}}">
       <view class="item-status-gray">审核中</view>
-      <icon data-id="{{item.id}}" type="cancel" class="check-one" wx:if="{{edit}}" bindtap="cancelThis"></icon>
+      <icon data-id="{{index}}" type="cancel" class="check-one" wx:if="{{edit}}" bindtap="cancelThis"></icon>
     </view>
-    <view class="status" wx:elif="{{item.status == 1}}">
+    <view class="status" wx:elif="{{item.status == 0 }}">
       <view class="item-status-green">可预约</view>
-      <image src="{{item.src}}" class="choose_img" data-index="{{index}}" data-time="{{item.begin_at}}"  data-id="{{item.id}}" class="check-one" wx:if="{{edit}}" bindtap="addtime"></image>
+      <image src="{{item.src}}" class="choose_img" data-index="{{index}}" data-time="{{item.time}}"  data-id="{{index}}" class="check-one" wx:if="{{edit}}" bindtap="addtime"></image>
     </view>
-    <view class="status" wx:elif="{{item.status == 0 && item.check == 1}}">
+    <view class="status" wx:elif="{{item.status == 2 && item.review == 1}}">
       <view class="item-status-blue">已预约</view>
       <icon data-id="{{item.id}}" type="cancel" class="check-one" wx:if="{{edit}}" bindtap="cancelThis"></icon>
     </view>
-    <view class="status" wx:elif="{{item.check == -1}}">
+    <view class="status" wx:elif="{{item.review == 0}}">
       <view class="item-status-orange">已拒绝</view>
     </view>
   </view>

@@ -1,4 +1,6 @@
 // pages/day/dayReserve/step1/step1.js
+const app = getApp()
+
 Page({
 
   /**
@@ -7,7 +9,9 @@ Page({
   data: {
     month:'',
     day:'',
+    year:'',
     time:[],
+    chosed_id: [],
     hasImage:false,
     src:'',
     tipinfo:'拍取照片'
@@ -20,27 +24,31 @@ Page({
     let thisid = option.time;
     let thismonth = option.month;
     let thisday = option.day;
+    let thisyear = option.year;
+
     this.setData({
       month:thismonth,
-      day:thisday
+      day:thisday,
+      year:thisyear,
     })
     let app = getApp();
     let time = app.globalData.chosen_time;
+    let id = app.globalData.chosen_id; 
     this.setData({
-      time:time
+      time:time,
+      chosed_id:id
     })
   },
   //拍照上传
   takephoto: function(){
     if(this.data.tipinfo == "确定上传"){
       wx.redirectTo({
-        url: '../step2/step2',
+        url: '../step2/step2?month=' + this.data.month + "&day=" + this.data.day + "&year=" + this.data.year,
       })
     }else{
       let self = this;
       wx.chooseImage({
         success: function (res) {
-          console.log(res)
           self.setData({
             tipinfo: "确定上传"
           })
@@ -78,12 +86,6 @@ Page({
   
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作

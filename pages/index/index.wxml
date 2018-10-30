@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+  <loading hidden="{{loadingHidden}}">加载中……</loading>
   <!-- 提示模态框 -->
   <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
   <!-- 提示一 -->
@@ -51,7 +52,7 @@
   </view>
   <view class="usermotto">
     <text class="user-motto">温馨提示：</text>
-    <text>馆每个时间段最多接纳30人，若多于30人，建议分批次预约</text>
+    <text>馆每个时间段最多接纳30人，若多于30人，建议分批次预约\n\n</text>
   </view>
 </view>
 <view class="calendar">
@@ -81,38 +82,40 @@
       <view class="week-itm" wx:for="{{weeklist}}">{{item}}</view>
     </view>
     <view class="flex days-list">
+      <!-- 上月日期 -->
       <view class="day lm" wx:for="{{lastMonthDaysList}}" data-handle="prev" bindtap="handleMonth" bindtap="daycheck">
         <text>{{item}}</text>
       </view>
-      <block wx:for="{{day_status}}" wx:for-item="item">
+      <!-- 本月情况 -->
+      <block wx:for="{{currentMonthDaysList}}" wx:for-item="item">
         <block wx:if="{{(item.status == 0)&&(item.day!=undefined)}}">
-          <view class="day blue" bindtap="daycheck" data-id="{{item.id}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-status="{{item.status}}">
+          <view class="day blue" bindtap="daycheck" data-year="{{item.year}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-time="{{item.date}}" data-status="{{item.status}}">
             <text>{{item.day}}</text>
           </view>
         </block>
         <block wx:if="{{(item.status == 1)&&(item.day!=undefined)}}">
-          <view class="day green" bindtap="daycheck" data-id="{{item.id}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-status="{{item.status}}">
+          <view class="day green" bindtap="daycheck" data-year="{{item.year}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-time="{{item.date}}" data-status="{{item.status}}">
             <text>{{item.day}}</text>
           </view>
         </block>
         <block wx:if="{{(item.status == 2)&&(item.day!=undefined)}}">
-          <view class="day yellow" bindtap="daycheck" data-id="{{item.id}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-status="{{item.status}}">
+          <view class="day yellow" bindtap="daycheck" data-year="{{item.year}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-time="{{item.date}}" data-status="{{item.status}}">
             <text>{{item.day}}</text>
           </view>
         </block>
         <block wx:elif="{{(item.status == 3)&&(item.day!=undefined)}}">
-          <view class="day red" bindtap="daycheck" data-id="{{item.id}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-status="{{item.status}}">
+          <view class="day red" bindtap="daycheck" data-year="{{item.year}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-time="{{item.date}}" data-status="{{item.status}}">
             <text>{{item.day}}</text>
           </view>
         </block>
-        <block wx:elif="{{(item.status==undefined)&&(item.day!=undefined)}}">
-          <view class="day" bindtap="daycheck" data-id="{{item.id}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-status="{{item.status}}">
+        <block wx:elif="{{(item.status==-1)&&(item.day!=undefined)}}">
+          <view class="day" bindtap="daycheck" data-year="{{item.year}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-time="{{item.date}}" data-status="{{item.status}}">
             <text>{{item.day}}</text>
           </view>
         </block>
       </block>
-      <!-- 未来情况 -->
-      <view class="day nm" wx:for="{{nextMonth}}" data-day="{{item.day}}" data-month="{{cur_month+2}}" data-handle="next" bindtap="handleMonth" data-status="{{item.status}}" bindtap="daycheck" data-id="{{item.id}}">
+      <!-- 下月情况 -->
+      <view class="day nm" wx:for="{{nextMonthDaysList}}" data-day="{{item.day}}" data-time="{{item.date}}" data-month="{{cur_month+2}}" data-handle="next" bindtap="handleMonth" data-status="{{item.status}}" bindtap="daycheck" data-year="{{item.year}}">
         <text wx:if="{{item.status==0}}" class="blo-text blue">{{item.day}}</text>
         <text wx:elif="{{item.status==1}}" class="blo-text green">{{item.day}}</text>
         <text wx:elif="{{item.status==2}}" class="blo-text yellow">{{item.day}}</text>

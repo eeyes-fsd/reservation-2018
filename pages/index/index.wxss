@@ -178,3 +178,12 @@ margin:24rpx auto;
 border-bottom:1px solid;
 
 }
+
+.usermotto{
+  padding:10%;
+}
+
+.update_info{
+  padding:10%;
+  font-size: 60rpx;
+}
