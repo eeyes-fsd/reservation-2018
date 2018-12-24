@@ -33,7 +33,7 @@
     </view>
     <view class="status" wx:elif="{{item.status == 2 && item.review == 1}}">
       <view class="item-status-blue">已预约</view>
-      <icon data-id="{{item.id}}" type="cancel" class="check-one" wx:if="{{edit}}" bindtap="cancelThis"></icon>
+      <icon data-id="{{item.id}}" type="cancel" class="check-one" wx:if="{{edit}}"></icon>
     </view>
     <view class="status" wx:elif="{{item.review == 0}}">
       <view class="item-status-orange">已拒绝</view>

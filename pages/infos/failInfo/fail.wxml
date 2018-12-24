@@ -1,0 +1,9 @@
+<!--pages/infos/failInfo/fail.wxml-->
+<view class='container'>
+  <text class='title'>
+    通知
+  </text>
+  <view class='info'>
+    <text>\n\n交大西迁博物馆新馆开馆在即，\n经学校同意11月29日到12月4日，\n老馆内部调整暂停开放</text>
+  </view>
+</view>

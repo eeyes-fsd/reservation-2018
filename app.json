@@ -6,7 +6,8 @@
     "pages/day/dayReserve/step2/step2",
     "pages/day/dayReserve/step3/step3",
     "pages/infos/guidance/guidance",
-    "pages/infos/instruction/instruction"
+    "pages/infos/instruction/instruction",
+    "pages/infos/failInfo/fail"
   ],
   "window": {
     "backgroundTextStyle": "light",

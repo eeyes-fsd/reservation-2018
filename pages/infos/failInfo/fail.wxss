@@ -1,0 +1,13 @@
+/* pages/infos/failInfo/fail.wxss */
+.container{
+  padding: 36rpx;
+}
+.title{
+  text-align: center;
+  font-size: 80rpx;
+  font-weight: 10rpx;
+  color: red;
+}
+.info{
+  font-size: 40rpx;
+}

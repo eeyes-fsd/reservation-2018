@@ -162,7 +162,8 @@ view:after,view:before{content: "";box-sizing: border-box;}
 .blue{background: #5AA4E8;color: #fff;}
 .blue>text{color: #fff;}
 .blo-text{display: block;}
-
+.purple{background: purple;}
+.purple>text{color: #fff;}
 .getHelp{
   background:#0DBF2A;
   width: 80%;

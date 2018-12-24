@@ -8,7 +8,7 @@
     <view class="modal-title">提示</view>
     <view class="modal-content">
       <view class="modal-main-first" wx:if="{{showModalFirst}}">
-        西安交通大学西迁纪念博物馆欢迎您的参观！
+        交大西迁博物馆欢迎您的参观！
         <view class="info_item">
           <view class="info_pic day_all">21</view>
           <view class="info_word">表示该日全部可预约</view>
@@ -111,6 +111,11 @@
         <block wx:elif="{{(item.status==-1)&&(item.day!=undefined)}}">
           <view class="day" bindtap="daycheck" data-year="{{item.year}}" data-month="{{cur_month+1}}" data-day="{{item.day}}" data-time="{{item.date}}" data-status="{{item.status}}">
             <text>{{item.day}}</text>
+          </view>
+        </block>
+        <block wx:if="{{item.status == 5}}">
+          <view class="day purple" bindtap="failInfo">
+            <text>{{ item.day }}</text>
           </view>
         </block>
       </block>

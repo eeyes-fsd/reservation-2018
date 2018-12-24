@@ -51,6 +51,11 @@ Page({
       showModal: false
     })
   },
+  failInfo:function(){
+    wx.navigateTo({
+      url: '../infos/failInfo/fail',
+    })
+  },
   onCancel: function() {
     this.hideModal();
   },

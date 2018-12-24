@@ -66,6 +66,6 @@ App({
     chosen_time:[],
     chosen_id:[],
     pic:"",
-    request_url:"https://mem.eeyes.xyz/api/",
+    request_url:"https://mem.eeyes.net/api/",
   }
 })
